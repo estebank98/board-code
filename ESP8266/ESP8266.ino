@@ -72,26 +72,26 @@ void loop() {
 
       Serial.println("Trabajando sobre los leds...");
       if (perim == 1){    // no estoy segura si en el programa devuelve 1 o HIGH es solo cuestion de modificar en caso contrario
-        digitalWrite(D0,HIGH);
+        analogWrite(D0,HIGH);
       }
       if (inter == 1){
-        digitalWrite(D1,HIGH);
+        analogWrite(D1,HIGH);
       }
       if(park == 1){
-        digitalWrite(D2,par_r);    //luces RGB
-        digitalWrite(D5,par_g);
-        digitalWrite(D6,par_b);
+        analogWrite(D2,par_r);    //luces RGB
+        analogWrite(D5,par_g);
+        analogWrite(D6,par_b);
       }
        if (perim == 0){
-        digitalWrite(D0,LOW);
+        analogWrite(D0,LOW);
       }
       if (inter == 0){
-        digitalWrite(D1,LOW);
+        analogWrite(D1,LOW);
       }
       if(park == 0){
-        digitalWrite(D2,0);
-        digitalWrite(D5,0);
-        digitalWrite(D6,0);
+        analogWrite(D2,0);
+        analogWrite(D5,0);
+        analogWrite(D6,0);
       }
       Serial.println("");
     }
