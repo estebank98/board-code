@@ -1,31 +1,31 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
-
+ 
 /*se define los pines a utilizar llevando en cuenta que los puertos 
 del nodemcu no son los mismos que del integrado esp8266*/
-
+ 
 #define D0   16 //GPIO16 - WAKE UP    perim
 #define D1   5  //GPIO5               inter
 #define D2   4  //GPIO14              par_r
 #define D5   14 //GPIO14 - HSCLK      par_g
 #define D6   12 //GPIO12 - HMISO      par_b
-
+ 
 // WiFi Parameters
-const char* ssid = "Krauwezuk Wifi";
-const char* password = "";
-
+const char* ssid = "Nombre de la red";
+const char* password = "Contraseña de la red";
+ 
 void setup() {
   Serial.begin(115200);
-
+ 
   //se configura los pines a utilizar como salida
   pinMode(D0,OUTPUT);  //D0 perim
   pinMode(D1,OUTPUT);  //D1 inter
   pinMode(D2,OUTPUT);  //D2 park_r
   pinMode(D5,OUTPUT);  //D5 park_g
   pinMode(D6,OUTPUT);  //D6 park_b
-
-  
+ 
+ 
   WiFi.begin(ssid, password);
  
   while (WiFi.status() != WL_CONNECTED) {
@@ -33,7 +33,7 @@ void setup() {
     Serial.println("Connecting...");
   }
 }
-
+ 
 void loop() {
   // Check WiFi Status
   Serial.println("Conectando...");
@@ -61,17 +61,17 @@ void loop() {
       Serial.println(perim);
       Serial.print("inter:");
       Serial.println(inter);
-      Serial.print("park:"); 
+      Serial.print("park:");
       Serial.println(park);
       Serial.print("par_r:");
       Serial.println(par_r);
       Serial.print("par_g:");
       Serial.println(par_g);
-      Serial.print("par_b:"); 
+      Serial.print("par_b:");
       Serial.println(par_b);
-
+ 
       Serial.println("Trabajando sobre los leds...");
-      if (perim == 1){    // no estoy segura si en el programa devuelve 1 o HIGH es solo cuestion de modificar en caso contrario
+      if (perim == 1){
         analogWrite(D0,HIGH);
       }
       if (inter == 1){
